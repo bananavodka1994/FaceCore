@@ -130,8 +130,8 @@ UPDATE `creature_template` SET `speed_run` = '1.29', `faction_A` = '1770', `fact
 
 DELETE FROM `spell_area` WHERE (`spell` = '74310') AND (`area` IN ('1', '135', '721'));
 INSERT INTO `spell_area` VALUES
-('74310', '721', '25287', '1', '25393', '0', '0', '2', '1'),
-('74310', '135', '25287', '1', '25393', '0', '0', '2', '1');
+('74310', '721', '25287', '1', '25393', '0', '0', '2', '1', '1'),
+('74310', '135', '25287', '1', '25393', '0', '0', '2', '1', '1');
 
 UPDATE `gameobject` SET `phaseMask` = '257' WHERE `id` = '194498';
 UPDATE `gameobject` SET `phaseMask` = '256' WHERE `id` = '202922';
