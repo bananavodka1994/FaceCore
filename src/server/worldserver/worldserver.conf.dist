@@ -2685,15 +2685,6 @@ PlayerDump.DisallowPaths = 1
 
 PlayerDump.DisallowOverwrite = 1
 
-#
-#   DuelResetCooldown
-#	Reseting spell cooldowns and restore health and mana with end duel
-#	Default: 0 - Disable
-#		 1 - Enable
-#
-
-DuelResetCooldown = 0
-
 #   PlayersAccessToGMIsland
 #       Prevent access for players to gm island
 #	Default: 0 - Disable
