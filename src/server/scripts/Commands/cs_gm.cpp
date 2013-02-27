@@ -128,13 +128,9 @@ public:
         for (HashMapHolder<Player>::MapType::const_iterator itr = m.begin(); itr != m.end(); ++itr)
         {
             AccountTypes itrSec = itr->second->GetSession()->GetSecurity();
-<<<<<<< HEAD
-            if ((itr->second->isGameMaster() || (itrSec > SEC_MODERATOR && itrSec <= AccountTypes(sWorld->getIntConfig(CONFIG_GM_LEVEL_IN_GM_LIST)))) &&
-=======
             if ((itr->second->isGameMaster() ||
                 (itr->second->GetSession()->HasPermission(RBAC_PERM_COMMANDS_APPEAR_IN_GM_LIST) &&
                  itrSec <= AccountTypes(sWorld->getIntConfig(CONFIG_GM_LEVEL_IN_GM_LIST)))) &&
->>>>>>> 480c6cf4dd8965627aa7bc6e903558f2fa5c3ea6
                 (!handler->GetSession() || itr->second->IsVisibleGloballyFor(handler->GetSession()->GetPlayer())))
             {
                 if (first)
