@@ -1,7 +1,6 @@
 # output generic information about the core and buildtype chosen
 message("")
-message("* FaceCore rev. hash  : ${rev_hash}")
-message("* FaceCore rev. date  : ${rev_date}")
+message("* FaceCore(TrinityCore) revision   : ${rev_hash} ${rev_date} (${rev_branch} branch)")
 if( UNIX )
   message("* FaceCore buildtype  : ${CMAKE_BUILD_TYPE}")
 endif()
