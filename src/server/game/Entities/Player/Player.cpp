@@ -7572,7 +7572,7 @@ void Player::UpdateZone(uint32 newZone, uint32 newArea)
     {
         if (newZone == 876 && GetSession()->GetSecurity() == SEC_PLAYER)
         {
-            sLog->outInfo(LOG_FILTER_PLAYER, "Player (GUID: %u) tried to access GM Island.", GetGUIDLow());
+            TC_LOG_INFO(LOG_FILTER_PLAYER, "Player (GUID: %u) tried to access GM Island.", GetGUIDLow());
             TeleportTo(13, 1.118799f, 0.477914f, -144.708650f, 3.133046f);
         }
     }
@@ -8841,8 +8841,7 @@ void Player::SendLoot(uint64 guid, LootType loot_type)
     TC_LOG_DEBUG(LOG_FILTER_LOOT, "Player::SendLoot");
     if (IS_GAMEOBJECT_GUID(guid))
     {
-<<<<<<< HEAD
-        sLog->outDebug(LOG_FILTER_LOOT, "IS_GAMEOBJECT_GUID(guid)");
+        TC_LOG_DEBUG(LOG_FILTER_LOOT, "IS_GAMEOBJECT_GUID(guid)");
         if (GetSession()->GetSecurity() > SEC_MODERATOR)
         {
             if (Group *grp = GetGroup())
@@ -8859,9 +8858,6 @@ void Player::SendLoot(uint64 guid, LootType loot_type)
                 sLog->outCommand(GetSession()->GetAccountId(), "GM %s (Account: %u) opened GO (GUID: %u) X: %f Y: %f Z: %f Map: %u",
                     GetName().c_str(), GetSession()->GetAccountId(), GUID_LOPART(guid), GetPositionX(), GetPositionY(), GetPositionZ(), GetMapId());
         }
-=======
-        TC_LOG_DEBUG(LOG_FILTER_LOOT, "IS_GAMEOBJECT_GUID(guid)");
->>>>>>> 8e1601e202708ccd483456f5bfa06957470e2d3c
         GameObject* go = GetMap()->GetGameObject(guid);
 
         // not check distance for GO in case owned GO (fishing bobber case, for example)
@@ -26269,17 +26265,17 @@ void Player::CreateWowarmoryFeed(uint32 type, uint32 data, uint32 item_guid, uin
     */
     if (GetGUIDLow() == 0)
     {
-        sLog->outError(LOG_FILTER_PLAYER, "[Wowarmory]: player is not initialized, unable to create log entry!");
+        TC_LOG_ERROR(LOG_FILTER_PLAYER, "[Wowarmory]: player is not initialized, unable to create log entry!");
         return;
     }
     if (type <= 0 || type > 3)
     {
-        sLog->outError(LOG_FILTER_PLAYER, "[Wowarmory]: unknown feed type: %d, ignore.", type);
+        TC_LOG_ERROR(LOG_FILTER_PLAYER, "[Wowarmory]: unknown feed type: %d, ignore.", type);
         return;
     }
     if (data == 0)
     {
-        sLog->outError(LOG_FILTER_PLAYER, "[Wowarmory]: empty data (GUID: %u), ignore.", GetGUIDLow());
+        TC_LOG_ERROR(LOG_FILTER_PLAYER, "[Wowarmory]: empty data (GUID: %u), ignore.", GetGUIDLow());
         return;
     }
     WowarmoryFeedEntry feed;
@@ -26291,7 +26287,7 @@ void Player::CreateWowarmoryFeed(uint32 type, uint32 data, uint32 item_guid, uin
     feed.item_quality = item_quality;
     feed.counter = 0;
     feed.date = time(NULL);
-    sLog->outDebug(LOG_FILTER_UNITS, "[Wowarmory]: create wowarmory feed (GUID: %u, type: %d, data: %u).", feed.guid, feed.type, feed.data);
+    TC_LOG_DEBUG(LOG_FILTER_UNITS, "[Wowarmory]: create wowarmory feed (GUID: %u, type: %d, data: %u).", feed.guid, feed.type, feed.data);
     m_wowarmory_feeds.push_back(feed);
 }
 /** World of Warcraft Armory **/
